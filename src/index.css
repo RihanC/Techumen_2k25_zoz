@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Space/Tech Theme Design System */
+
+@layer base {
+  :root {
+    /* Cosmic background colors */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+
+    /* Space card colors with glassmorphism */
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 220 25% 20%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Cosmic primary - deep space blue */
+    --primary: 220 60% 20%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Cosmic secondary - lighter space blue */
+    --secondary: 220 30% 16%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Cosmic muted */
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 15% 65%;
+
+    /* Cosmic accent - cyan glow */
+    --accent: 190 80% 50%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 16%;
+    --ring: 190 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Cosmic gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 60% 20%), hsl(240 80% 25%));
+    --gradient-space: linear-gradient(180deg, hsl(220 25% 8%), hsl(240 30% 12%));
+    --gradient-nebula: linear-gradient(45deg, hsl(190 80% 50% / 0.1), hsl(240 80% 60% / 0.1));
+    --gradient-glow: radial-gradient(circle at center, hsl(190 80% 50% / 0.3), transparent 70%);
+
+    /* Animation */
+    --transition-cosmic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Glassmorphism */
+    --glass-bg: hsl(220 25% 12% / 0.8);
+    --glass-border: hsl(220 25% 20% / 0.5);
+    --glass-shadow: 0 8px 32px hsl(220 60% 10% / 0.3);
+
+    /* Tech glow effects */
+    --glow-cyan: 0 0 20px hsl(190 80% 50% / 0.5);
+    --glow-blue: 0 0 30px hsl(240 80% 60% / 0.4);
+
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 190 80% 50%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 25% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 190 80% 50%;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card component */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-card-border rounded-lg;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  /* Cosmic glow effects */
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-blue {
+    box-shadow: var(--glow-blue);
+  }
+
+  /* Hover effects */
+  .hover-glow:hover {
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-2px);
+  }
+
+  /* Cosmic button */
+  .btn-cosmic {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium;
+    background: var(--gradient-cosmic);
+    transition: var(--transition-cosmic);
+  }
+
+  .btn-cosmic:hover {
+    box-shadow: var(--glow-blue);
+    transform: translateY(-1px);
+  }
+
+  /* Event card hover effect */
+  .event-card {
+    @apply glass-card p-6 transition-all duration-300 hover-glow cursor-pointer;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-space);
+    background-attachment: fixed;
+  }
+
+  /* Cosmic background animation */
+  .cosmic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  /* Floating animation for decorative elements */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: var(--glow-cyan); }
+    50% { box-shadow: 0 0 30px hsl(190 80% 50% / 0.8); }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+
