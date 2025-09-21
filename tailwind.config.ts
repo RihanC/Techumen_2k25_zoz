@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -60,15 +65,15 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-cosmic': 'var(--gradient-cosmic)',
-        'gradient-space': 'var(--gradient-space)',
-        'gradient-nebula': 'var(--gradient-nebula)',
-        'gradient-glow': 'var(--gradient-glow)',
+        "gradient-cosmic": "var(--gradient-cosmic)",
+        "gradient-space": "var(--gradient-space)",
+        "gradient-nebula": "var(--gradient-nebula)",
+        "gradient-glow": "var(--gradient-glow)",
       },
       boxShadow: {
-        'glow-cyan': 'var(--glow-cyan)',
-        'glow-blue': 'var(--glow-blue)',
-        'glass': 'var(--glass-shadow)',
+        "glow-cyan": "var(--glow-cyan)",
+        "glow-blue": "var(--glow-blue)",
+        glass: "var(--glass-shadow)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -77,25 +82,28 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        // 🔥 Gradient animation for text/background
+        "gradient-x": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        // 🔥 Gradient animation class
+        "gradient-x": "gradient-x 5s ease infinite",
+      },
+      backgroundSize: {
+        // Needed for gradient movement
+        "200": "200% 200%",
       },
     },
   },
